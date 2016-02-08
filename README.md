@@ -1,7 +1,7 @@
 # rcmd - remote command
 #### Descrição
 
-rcmd é um programa desenvolvido para executar o mesmo comando em diversos servidores. rcmd utiliza a implementação de Threads do Python, o que barateia seu custo de execução e agiliza o retorno da execução dos comandos remotos.
+rcmd é um programa desenvolvido para executar o mesmo comando em diversos servidores. rcmd utiliza a implementação de Threads do Python, o que barateia seu custo de processamento e agiliza o retorno da execução dos comandos remotos.
 
 #### Pré-requisitos
 

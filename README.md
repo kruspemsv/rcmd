@@ -1,9 +1,9 @@
 # rcmd - remote command
-### Descrição
+#### Descrição
 
 rcmd é um programa desenvolvido para executar o mesmo comando em diversos servidores. rcmd utiliza a implementação de Threads do Python, o que barateia seu custo de execução e agiliza o retorno da execução dos comandos remotos.
 
-### Uso
+#### Uso
 
 ```
 Uso: usage: ./rcmd.py [-h] -H [HOSTS [HOSTS ...]] [-l LOGIN] -c COMANDO [-p PASSWORD]
@@ -19,6 +19,8 @@ optional arguments:
                         Senha do login. Se nao fornecido um prompt surgira.
                         
 ```
+
+#### Exemplos
 
 rcmd aceita a execução de um comando para um unico host:
 
@@ -56,10 +58,20 @@ Thread-88-192.168.56.103::INFO: Linux centos6 2.6.32-573.el6.x86_64
 11:21:27
 ```
 
-Teste com 1000 conexões (42 segundos):
+stdout e stderr são implementados conforme o padrão, então é possível:
 
-```bash
-root@osboxes:/opt/scripts/rcmd# DATA=`echo date +%H:%M:%S`
-root@osboxes:/opt/scripts/rcmd# $DATA;./rcmd.py -H `python -c "print '192.168.56.103 ' * 1000"` -c "uname -nsr" -l mvarge;$DATA
-11:24:09
 ```
+root@osboxes:/opt/scripts/rcmd# ./rcmd.py -H 192.168.56.103 192.168.56.104 -c "uname -nsr" -l mvarge
+Password:
+192.168.56.104::ERROR: [Errno None] Unable to connect to port 22 on  or 192.168.56.104
+Thread-0-192.168.56.103::INFO: Linux centos6 2.6.32-573.el6.x86_64
+root@osboxes:/opt/scripts/rcmd#
+root@osboxes:/opt/scripts/rcmd# ./rcmd.py -H 192.168.56.103 192.168.56.104 -c "uname -nsr" -l mvarge 2> erros.log
+Password:
+Thread-0-192.168.56.103::INFO: Linux centos6 2.6.32-573.el6.x86_64
+root@osboxes:/opt/scripts/rcmd# cat erros.log
+192.168.56.104::ERROR: [Errno None] Unable to connect to port 22 on  or 192.168.56.104
+```
+
+#### Outros
+Qualquer dúvida, sugestão, melhorias, bugs, etc: marcelo.varge@gmail.com

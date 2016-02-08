@@ -3,6 +3,16 @@
 
 rcmd é um programa desenvolvido para executar o mesmo comando em diversos servidores. rcmd utiliza a implementação de Threads do Python, o que barateia seu custo de execução e agiliza o retorno da execução dos comandos remotos.
 
+#### Pré-requisitos
+
+rcmd utiliza o módulo Paramiko para criar e gerenciar as conexões SSH. Para instalar deve ser simples como:
+
+```
+pip install paramiko
+```
+
+Caso isto não funcione é possível baixar e compilar o módulo manualmente: https://pypi.python.org/pypi/paramiko/
+
 #### Uso
 
 ```

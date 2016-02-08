@@ -70,6 +70,8 @@ class Conexao(threading.Thread):
 			self.ssh.close()
 		except paramiko.AuthenticationException as e:
 			sys.stderr.write("%s: %s\n" % (self.error, e))
+		except paramiko.ssh_exception.NoValidConnectionsError as e:
+			sys.stderr.write("%s: %s\n" % (self.error, e))
 
 if __name__ == "__main__":
 
